@@ -1324,7 +1324,7 @@ Comparing the lateral profiles in the two cases on the peaks (figures \ref{}), w
 
 The last single beam test was done on the double wedge phantom. From some aspects, it looks like the $45^\circ$ case in the water box, but inverted inside out. As in that case, the dose calculated by matRad is clearly artificial and unnatural. The shape of the Bragg peak calculated with fine sampling, is instead very accurate, reaching the $100\%$ agreement in the gamma index pass rate, in both cases. 
 This tells us that in the double wedge phantom, the central components are more relevant than the others.
-In this case, I decided to show three longitudinal profiles: the central one, where there is a good agreement between Monte Carlo and fine sampling; and two shifted of three voxel in opposite lateral directions, where there is a difference in dose in the plateau, in the initial part of the path (clearer in the most energetic beam in figures \ref{} and \ref{}).
+In this case, I decided to show three longitudinal profiles: the central one, where there is a good agreement between Monte Carlo and fine sampling; and two shifted of three voxel in opposite lateral directions, where there is a difference in dose in the plateau, in the initial part of the path (clearer in the most energetic beam in figures \ref{fig:DW2prof_cdp1} and \ref{fig:DW2prof_cdp2}).
 The integrated depth-dose profile presents a poor accuracy from matRad. Given its shape, the peak of dose is distributed in backward direction and so we have that strange behavior at the maximum. Fine sampling is in line with the expectations. 
 \begin{figure}[!t]
 \centering
@@ -1337,8 +1337,8 @@ The integrated depth-dose profile presents a poor accuracy from matRad. Given it
 \caption{Dose deposition of a beam at an energy of $172\,MeV$ in double wedge phantom.}
 \label{fig:DW2}
 \end{figure}
-Beacuse of the shape of the phantom, I decided to show two types of lateral profile: the one used in the other cases, explained in section \ref{sec:dose_prof}; and a profile that follows the lines of the surface of the phantom, so that takes the first voxels crossed by the beam. The same thing was transposed on the peak obtaining the figures \ref{} and \ref{}.
-Particular attention has to be paid to the profiles of the peaks (figure \ref{} and \ref{}). It shows the weakenesses of matRad but also the ridity of fine sampling. Because of the shape of the phantom, the natural behaviour of the beam should be to become tighter but, in both cases, the profile of fine sampling is a little wider than what should be. This is always caused by the fact that fine sampling central components account more than laterals and the largest part of the peak is composed by the central beam.
+Beacuse of the shape of the phantom, I decided to show two types of lateral profile: the one used in the other cases, explained in section \ref{sec:dose_prof}; and a profile that follows the lines of the surface of the phantom, so that takes the first voxels crossed by the beam. The same thing was transposed on the peak obtaining the figures \ref{fig:DW1prof_peak2} and \ref{fig:DW2prof_peak2}.
+Particular attention has to be paid to the profiles of the peaks (figure \ref{fig:DW1prof_peak} and \ref{fig:DW2prof_peak}). It shows the weakenesses of matRad but also the ridity of fine sampling. Because of the shape of the phantom, the natural behaviour of the beam should be to become tighter but, in both cases, the profile of fine sampling is a little wider than what should be. This is always caused by the fact that fine sampling central components account more than laterals and the largest part of the peak is composed by the central beam.
 
 \begin{figure}[!ht]
 \centering
@@ -1354,7 +1354,7 @@ Particular attention has to be paid to the profiles of the peaks (figure \ref{} 
 \label{fig:DW1gam}
 \end{figure}
 
-\begin{figure}[!h]
+\begin{figure}[!t]
 \centering
 \subfloat[][\emph{Percentage\\ difference}]
 {\includegraphics[width=.43\textwidth]{Images/mR_FSBvsMC_pub_doublew_single/mR_FSBvsMC_pub_doublew_single_20}} 
@@ -1368,7 +1368,7 @@ Particular attention has to be paid to the profiles of the peaks (figure \ref{} 
 \label{fig:DW2gam}
 \end{figure}
 
-\begin{figure}[!h]
+\begin{figure}[!t]
 \centering
 \subfloat[][\emph{\scriptsize Central Dose profile}]
 {\includegraphics[width=.40\textwidth]{Images/mR_FSBvsMC_pub_doublew_single/mR_FSBvsMC_pub_doublew_single_08}} 
@@ -1381,11 +1381,11 @@ Particular attention has to be paid to the profiles of the peaks (figure \ref{} 
 \subfloat[][\emph{\scriptsize Entering profile}]
 {\includegraphics[width=.40\textwidth]{Images/mR_FSBvsMC_pub_doublew_single/mR_FSBvsMC_pub_doublew_single_12}}
 \subfloat[][\emph{\scriptsize Peak profile}]
-{\includegraphics[width=.40\textwidth]{Images/mR_FSBvsMC_pub_doublew_single/mR_FSBvsMC_pub_doublew_single_13}}\\
+{\includegraphics[width=.40\textwidth]{Images/mR_FSBvsMC_pub_doublew_single/mR_FSBvsMC_pub_doublew_single_14}\label{fig:DW1prof_peak}}\\
 \subfloat[][\emph{\scriptsize Surface entering profile}]
-{\includegraphics[width=.40\textwidth]{Images/mR_FSBvsMC_pub_doublew_single/mR_FSBvsMC_pub_doublew_single_14}}
+{\includegraphics[width=.40\textwidth]{Images/mR_FSBvsMC_pub_doublew_single/mR_FSBvsMC_pub_doublew_single_15}}
 \subfloat[][\emph{\scriptsize Surface peak profile}]
-{\includegraphics[width=.40\textwidth]{Images/mR_FSBvsMC_pub_doublew_single/mR_FSBvsMC_pub_doublew_single_15}}\\
+{\includegraphics[width=.40\textwidth]{Images/mR_FSBvsMC_pub_doublew_single/mR_FSBvsMC_pub_doublew_single_16}\label{fig:DW1prof_peak2}}\\
 \caption{Profiles in double wedge phantom simulation for a beam at $125\,MeV$.}
 \label{fig:DW1prof}
 \end{figure}
@@ -1395,19 +1395,19 @@ Particular attention has to be paid to the profiles of the peaks (figure \ref{} 
 \subfloat[][\emph{\scriptsize Central Dose profile}]
 {\includegraphics[width=.42\textwidth]{Images/mR_FSBvsMC_pub_doublew_single/mR_FSBvsMC_pub_doublew_single_24}} 
 \subfloat[][\emph{\scriptsize Central Dose profile}]
-{\includegraphics[width=.42\textwidth]{Images/mR_FSBvsMC_pub_doublew_single/mR_FSBvsMC_pub_doublew_single_25}}\\
+{\includegraphics[width=.42\textwidth]{Images/mR_FSBvsMC_pub_doublew_single/mR_FSBvsMC_pub_doublew_single_25}\label{fig:DW2prof_cdp1}}\\
 \subfloat[][\emph{\scriptsize Central Dose profile}]
-{\includegraphics[width=.42\textwidth]{Images/mR_FSBvsMC_pub_doublew_single/mR_FSBvsMC_pub_doublew_single_26}}
+{\includegraphics[width=.42\textwidth]{Images/mR_FSBvsMC_pub_doublew_single/mR_FSBvsMC_pub_doublew_single_26}\label{fig:DW2prof_cdp2}}
 \subfloat[][\emph{\scriptsize Integrated Depth Dose profile}]
 {\includegraphics[width=.42\textwidth]{Images/mR_FSBvsMC_pub_doublew_single/mR_FSBvsMC_pub_doublew_single_27}}\\
 \subfloat[][\emph{\scriptsize Entering profile}]
 {\includegraphics[width=.42\textwidth]{Images/mR_FSBvsMC_pub_doublew_single/mR_FSBvsMC_pub_doublew_single_28}}
 \subfloat[][\emph{\scriptsize Peak profile}]
-{\includegraphics[width=.42\textwidth]{Images/mR_FSBvsMC_pub_doublew_single/mR_FSBvsMC_pub_doublew_single_29}}\\
+{\includegraphics[width=.42\textwidth]{Images/mR_FSBvsMC_pub_doublew_single/mR_FSBvsMC_pub_doublew_single_30}\label{fig:DW2prof_peak}}\\
 \subfloat[][\emph{\scriptsize Surface entering profile}]
-{\includegraphics[width=.42\textwidth]{Images/mR_FSBvsMC_pub_doublew_single/mR_FSBvsMC_pub_doublew_single_30}}
+{\includegraphics[width=.42\textwidth]{Images/mR_FSBvsMC_pub_doublew_single/mR_FSBvsMC_pub_doublew_single_31}}
 \subfloat[][\emph{\scriptsize Surface peak profile}]
-{\includegraphics[width=.42\textwidth]{Images/mR_FSBvsMC_pub_doublew_single/mR_FSBvsMC_pub_doublew_single_31}}\\
+{\includegraphics[width=.42\textwidth]{Images/mR_FSBvsMC_pub_doublew_single/mR_FSBvsMC_pub_doublew_single_32}\label{fig:DW2prof_peak2}}\\
 \caption{Profiles in double wedge phantom simulation for a beam at $172\,MeV$.}
 \label{fig:DW2prof}
 \end{figure}
@@ -1613,7 +1613,7 @@ I believe that a completely different way of thinking is needed for finding a ne
 
 For a deeper examination, one should use a full field prospect made on CTs of real cases of patient treatments. This allows us to use a large spectrum of energies on real treatment plans and gives a complete and exhaustive big picture of the accuracy of this method.
 
-In conclusion, I think that the application possibilities of pencil beam fine sampling are a few, even with all the possible improvements. My proposal is to acquire what we have learned from this work and use it in order to design a new algorithm that does not need ray casting and with an approach more similar to Monte Carlo. From what I have learned during this thesis, I think the world of the dose calculation is moving towards simulations based on Monte Carlo methods and GPU computing. There is the need of novelty in dose calculation and this might be the starting point.
+In conclusion, I think that the application possibilities of pencil beam fine sampling are a few, even with all the possible improvements. My proposal is to acquire what we have learned from this work and use it in order to design a new algorithm that does not need ray casting and with an approach more similar to Monte Carlo. From what I have learned during this thesis, I think the world of the dose calculation is moving towards simulations based on Monte Carlo methods and GPU computing. There is the need of novelty in dose calculation and that might be the starting point.
 
 
 %\appendix
