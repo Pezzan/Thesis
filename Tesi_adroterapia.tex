@@ -10,7 +10,7 @@
 \usepackage{booktabs}
 \usepackage{comment}
 \usetikzlibrary{shapes.geometric, arrows}
-\linenumbers
+%\linenumbers
 
 \tikzstyle{arrow} = [thick,->,>=stealth]
 \tikzstyle{startstop} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=red!30]
@@ -116,7 +116,7 @@
 \begin{abstract}
 The hadrontherapy is a medical therapy based on a new technology allowing to treat cancer without surgery and with contained damages to healthy surrounding tissues. Nowadays, before every treatment, some simulations are run in order to estimate the dose deposition inside the patient. The most accurate softwares for this purpose are Monte Carlo based and simulate the effects for a huge amount of particles requiring a significant amount of computing time. Lately, new methods have been developed, such as the Analytical Probabilistic Modelling, the pencil beam Algorithms and the fine sampling Beam. The aim of this project is to understand, improve and implement the last two of the aforesaid methods by using matRad, and to compare them with the measurements provided by the Heidelberg Ions Therapy Center, the Syngo (Siemens' matRad clone) and the Fluka-based MC simulations. The most peculiar property of the pencil beam Algorithms is the speed, and I figured out that they can be exploited in a new method in order to increase the accuracy of the simulation instead. Then, my work focuses on the realization of this new software based on the pencil beam Algorithms. The first of the three steps of this work is to compare matRad, the Fine sampling (FS) algorithm and the Monte Carlo simulations for simple cases, i.e., in water environment and with some inhomogeneities. Then, I show the results for some cases of the Spread-Out Bragg Peaks and finally, for some full fields simulations either for matRad and FS and Syngo. 
 
-As I show in this work... (preliminary rough overview of the result)
+%As I show in this work... (preliminary rough overview of the result)
 
 \end{abstract}
 
@@ -1329,7 +1329,6 @@ The integrated depth-dose profile presents a poor accuracy from matRad. Given it
 \end{figure}
 Beacuse of the shape of the phantom, I decided to show two types of lateral profile: the one used in the other cases, explained in section \ref{sec:dose_prof}; and a profile that follows the lines of the surface of the phantom, so that takes the first voxels crossed by the beam. The same thing was transposed on the peak obtaining the figures \ref{fig:DW1prof_peak2} and \ref{fig:DW2prof_peak2}.
 Particular attention has to be paid to the profiles of the peaks (figure \ref{fig:DW1prof_peak} and \ref{fig:DW2prof_peak}). It shows the weakenesses of matRad but also the rigidity of fine sampling. Because of the shape of the phantom, the natural behaviour of the beam should be to become tighter but, in both cases, the profile of fine sampling is a little wider than what should be. This is always caused by the fact that fine sampling central components account more than laterals and the largest part of the peak is composed by the central beam.
-
 \begin{figure}[!ht]
 \centering
 \subfloat[][\emph{Percentage\\ difference}]
@@ -1343,7 +1342,6 @@ Particular attention has to be paid to the profiles of the peaks (figure \ref{fi
 \caption{Comparison between fine sampling beam and Monte Carlo Simulations (down), matRad and Monte Carlo Simulations (up) for a beam at $125\,MeV$ in double wedge phantom.}
 \label{fig:DW1gam}
 \end{figure}
-
 \begin{figure}[!t]
 \centering
 \subfloat[][\emph{Percentage\\ difference}]
@@ -1357,30 +1355,28 @@ Particular attention has to be paid to the profiles of the peaks (figure \ref{fi
 \caption{Comparison between fine sampling beam and Monte Carlo Simulations (down), matRad and Monte Carlo Simulations (up) for a beam at $172\,MeV$ in double wedge phantom.}
 \label{fig:DW2gam}
 \end{figure}
-
-\begin{figure}[!t]
+\begin{figure}[p]
 \centering
 \subfloat[][\emph{\scriptsize Central Dose profile}]
-{\includegraphics[width=.40\textwidth]{Images/mR_FSBvsMC_pub_doublew_single/mR_FSBvsMC_pub_doublew_single_08}} 
+{\includegraphics[width=.42\textwidth]{Images/mR_FSBvsMC_pub_doublew_single/mR_FSBvsMC_pub_doublew_single_08}} 
 \subfloat[][\emph{\scriptsize Central Dose profile}]
-{\includegraphics[width=.40\textwidth]{Images/mR_FSBvsMC_pub_doublew_single/mR_FSBvsMC_pub_doublew_single_09}}\\
+{\includegraphics[width=.42\textwidth]{Images/mR_FSBvsMC_pub_doublew_single/mR_FSBvsMC_pub_doublew_single_09}}\\
 \subfloat[][\emph{\scriptsize Central Dose profile}]
-{\includegraphics[width=.40\textwidth]{Images/mR_FSBvsMC_pub_doublew_single/mR_FSBvsMC_pub_doublew_single_10}}
+{\includegraphics[width=.42\textwidth]{Images/mR_FSBvsMC_pub_doublew_single/mR_FSBvsMC_pub_doublew_single_10}}
 \subfloat[][\emph{\scriptsize Integrated Depth Dose profile}]
-{\includegraphics[width=.40\textwidth]{Images/mR_FSBvsMC_pub_doublew_single/mR_FSBvsMC_pub_doublew_single_11}}\\
+{\includegraphics[width=.42\textwidth]{Images/mR_FSBvsMC_pub_doublew_single/mR_FSBvsMC_pub_doublew_single_11}}\\
 \subfloat[][\emph{\scriptsize Entering profile}]
-{\includegraphics[width=.40\textwidth]{Images/mR_FSBvsMC_pub_doublew_single/mR_FSBvsMC_pub_doublew_single_12}}
+{\includegraphics[width=.42\textwidth]{Images/mR_FSBvsMC_pub_doublew_single/mR_FSBvsMC_pub_doublew_single_12}}
 \subfloat[][\emph{\scriptsize Peak profile}]
-{\includegraphics[width=.40\textwidth]{Images/mR_FSBvsMC_pub_doublew_single/mR_FSBvsMC_pub_doublew_single_14}\label{fig:DW1prof_peak}}\\
+{\includegraphics[width=.42\textwidth]{Images/mR_FSBvsMC_pub_doublew_single/mR_FSBvsMC_pub_doublew_single_14}\label{fig:DW1prof_peak}}\\
 \subfloat[][\emph{\scriptsize Surface entering profile}]
-{\includegraphics[width=.40\textwidth]{Images/mR_FSBvsMC_pub_doublew_single/mR_FSBvsMC_pub_doublew_single_15}}
+{\includegraphics[width=.42\textwidth]{Images/mR_FSBvsMC_pub_doublew_single/mR_FSBvsMC_pub_doublew_single_15}}
 \subfloat[][\emph{\scriptsize Surface peak profile}]
-{\includegraphics[width=.40\textwidth]{Images/mR_FSBvsMC_pub_doublew_single/mR_FSBvsMC_pub_doublew_single_16}\label{fig:DW1prof_peak2}}\\
+{\includegraphics[width=.42\textwidth]{Images/mR_FSBvsMC_pub_doublew_single/mR_FSBvsMC_pub_doublew_single_16}\label{fig:DW1prof_peak2}}\\
 \caption{Profiles in double wedge phantom simulation for a beam at $125\,MeV$.}
 \label{fig:DW1prof}
 \end{figure}
-
-\begin{figure}[!ht]
+\begin{figure}[p]
 \centering
 \subfloat[][\emph{\scriptsize Central Dose profile}]
 {\includegraphics[width=.42\textwidth]{Images/mR_FSBvsMC_pub_doublew_single/mR_FSBvsMC_pub_doublew_single_24}} 
@@ -1404,66 +1400,161 @@ Particular attention has to be paid to the profiles of the peaks (figure \ref{fi
 
 
 
-
+\newpage
 \newpage
 \section{Realistic Treatment Fields}
 \subsection{Double Wedge}
-This section exposes the predictions made with matRad and Syngo and shows the comparison between them by using the $\gamma$-index test. The figures \ref{fig:SyngoMat} shown below are slices of a sagittal plane of the phantom passing through the isocenter of the CT-cube.
-\begin{figure}[!ht]
+\label{sec:FFDW}
+This section exposes the predictions made with matRad, Syngo and pencil beam fine sampling and shows the comparison between them by using the $\gamma$-index test and difference map. In figure \ref{fig:FFDW} are shown the slices of a sagittal plane of the phantom passing through the isocenter of the CT-cube.
+\begin{figure}[!h]
 \centering
-\subfloat[][\emph{Syngo}]
-{\includegraphics[width=.45\textwidth]{Images/Images/epub_comparison2_01.png}} \quad
 \subfloat[][\emph{matRad}]
-{\includegraphics[width=.45\textwidth]{Images/Images/epub_comparison2_02.png}} \quad
-\caption{Simulated Double Wedges Dose deposition}
-\label{fig:SyngoMat}
+{\includegraphics[width=.35\textwidth]{Images/Images_doublew/mR_FSBvsMC_pub_doublew_01}}
+\subfloat[][\emph{fine sampling}]
+{\includegraphics[width=.35\textwidth]{Images/Images_doublew/mR_FSBvsMC_pub_doublew_02}\label{fig:FFDW_fs}}
+\subfloat[][\emph{Syngo}]
+{\includegraphics[width=.35\textwidth]{Images/Images_doublew/mR_FSBvsMC_pub_doublew_03}}
+\caption{Full field dose deposition in double wedge phantom. Dose in $Gy$}
+\label{fig:FFDW}
 \end{figure}
 
-a
+As one can see from the comparison from matRad and Syngo (figure \ref{fig:FFDWgam_ms}), the two methods are almost equivalent, apart for small differences on the entrance surface. Both show an excess of dose after the maximum on the right side of the beam, where the entering angle is larger and equal to $60^\circ$. That is clearly an artifact that should not appear and it is caused by the tendency of pencil beam of reproducing the aspect of the entering surface on the Bragg peak, already treated before.
+We can see that fine sampling has a non-homogeneous dose distribution on the target area. It shows a peak on the right side of the beam (marked as red in figure \ref{fig:FFDW_fs}). This effect derives from two main problems: \emph{i)} the central sub-beams contribute more that the others, implicating that the Bragg peak of each pencil beam is emphasized and the dose distribution is no more flat but it somehow oscillates (figure \ref{fig:FFDWprof_cdp}); \emph{ii)} the optimization of this plan was made using Syngo as reference, that means that the intensity and the position of every pencil beam was chosen in order to have a flat dose distribution on the target, with that software.
+In the gamma-index test (figure \ref{fig:FFDWgam_mf}), the area with the gratest number of voxel failing the test is the one where this effect is more visible.
+In the integrated depth-dose profile, in figure \ref{fig:FFDWprof_ddp}, fine sampling has a steep decrease in dose after a peak, instead matRad and Syngo show a smoother transiction to zero caused by the aforesaid artifact. The expected result should be halfway between the two interpretations.
+Finally, figure \ref{fig:FFDWprof_peak} shows the slice of the dose cube where there is the maximum dose deposition  for fine sampling. The excess in dose for fine sampling coincides with a fluctuation of dose for both the pencil beam methods. These are crests parallel to the phantom surface, more visible in matRad dose deposition. The reason of this effect is also connected to the principles of ray casting. In order to legitimate that, in figure \ref{fig:FFDWprof_peak2}, are shown the profiles inside the target region but on lines parallel to the surface. In that case, we do not see any fluctuation.
 
-\begin{figure}[t]
+\begin{figure}[!t]
 \centering
-\subfloat[][\emph{Percentage Dose Difference}]
-{\includegraphics[width=.65\textwidth]{Images/Images/epub_comparison2_03.png}} \\
-\subfloat[][\emph{Gamma index test with parameters 1\% - 1$mm$}]
-{\includegraphics[width=.65\textwidth]{Images/Images/epub_comparison2_04.png}} \\
-\subfloat[][\emph{Gamma index test with parameters 2\% - 2$mm$}]
-{\includegraphics[width=.65\textwidth]{Images/Images/epub_comparison2_05.png}} \quad
-\caption{Comparison between matRad and Syngo}
-\label{fig:SyngoMat2}
+\subfloat[][\emph{Percentage\\ difference}]
+{\includegraphics[width=.43\textwidth]{Images/Images_doublew/mR_FSBvsMC_pub_doublew_06}} 
+\subfloat[][\emph{$\gamma$-index \\ $99.91\%$ [$3\%$ $3mm$]}]
+{\includegraphics[width=.43\textwidth]{Images/Images_doublew/mR_FSBvsMC_pub_doublew_07}\label{fig:FFDWgam_ms}} \\
+\subfloat[][\emph{Percentage\\ difference}]
+{\includegraphics[width=.43\textwidth]{Images/Images_doublew/mR_FSBvsMC_pub_doublew_04}} 
+\subfloat[][\emph{$\gamma$-index \\ $91.65\%$ [$3\%$ $3mm$]}]
+{\includegraphics[width=.43\textwidth]{Images/Images_doublew/mR_FSBvsMC_pub_doublew_05}
+\label{fig:FFDWgam_mf}}
+\caption{Comparison between fine sampling beam and Syngo Simulations (down), matRad and Syngo Simulations (up) in double wedge phantom, in full field.}
+\label{fig:FFDWgam}
 \end{figure}
 
-\subsubsection{Measurements}
+\begin{figure}[p]
+\centering
+\subfloat[][\emph{\scriptsize Central Dose profile}]
+{\includegraphics[width=.48\textwidth]{Images/Images_doublew/mR_FSBvsMC_pub_doublew_08}\label{fig:FFDWprof_cdp}} 
+%\subfloat[][\emph{\scriptsize Central Dose profile}]
+%{\includegraphics[width=.42\textwidth]{Images/Images_doublew/mR_FSBvsMC_pub_doublew_09}\label{fig:FFDWprof_cdp1}}\\
+%\subfloat[][\emph{\scriptsize Central Dose profile}]
+%{\includegraphics[width=.42\textwidth]{Images/Images_doublew/mR_FSBvsMC_pub_doublew_10}\label{fig:FFDWprof_cdp2}}
+\subfloat[][\emph{\scriptsize Integrated Depth Dose profile}]
+{\includegraphics[width=.48\textwidth]{Images/Images_doublew/mR_FSBvsMC_pub_doublew_11}\label{fig:FFDWprof_ddp}}\\
+\subfloat[][\emph{\scriptsize Entering profile}]
+{\includegraphics[width=.48\textwidth]{Images/Images_doublew/mR_FSBvsMC_pub_doublew_12}}
+\subfloat[][\emph{\scriptsize Peak profile}]
+{\includegraphics[width=.48\textwidth]{Images/Images_doublew/mR_FSBvsMC_pub_doublew_13}\label{fig:FFDWprof_peak}}\\
+\subfloat[][\emph{\scriptsize Surface entering profile}]
+{\includegraphics[width=.48\textwidth]{Images/Images_doublew/mR_FSBvsMC_pub_doublew_14}}
+\subfloat[][\emph{\scriptsize Surface peak profile}]
+{\includegraphics[width=.48\textwidth]{Images/Images_doublew/mR_FSBvsMC_pub_doublew_15}\label{fig:FFDWprof_peak2}}\\
+\caption{Profiles in full field double wedge phantom simulation.}
+\label{fig:FFDWprof}
+\end{figure}
+
+
+
+\subsection{Measurements}
 The last step of this thesis is to check the compatibility of our prediction with the real measurements. These are our gold standard and this is the final test that every software has to overcome to be consider a good predictor.
 
-As said in Chapter 2, the detector inside Double Wedges Phantom has been placed in 9 different positions and, for each of them, I have the dose value measured in every chamber and that one predicted by Syngo. In this case, the simulation with Syngo has been made in two different ways. The first simulates the whole proton beam and the dose deposition inside the CT-cube (it works in the same way as matRad does), then from this cube the values of dose in the areas covered by every single chamber are extracted. The second one, referred as Syngo, evaluates the dose directly inside the area covered by every single ionization chamber; this causes a slightly difference between them.
+As said before, the detector inside Double Wedges Phantom has been placed in 9 different positions and, for each of them, I have the dose value measured in every chamber and the one predicted by Syngo. In this case, the simulation with Syngo has been made in two different ways. The first simulates the whole proton beam and the dose deposition inside the CT-cube (it works in the same way as matRad does), then from this cube the values of dose in the areas covered by every single chamber are extracted, I will refer to this one as \emph{Planned}. The second one, referred as Syngo, evaluates the dose directly inside the area covered by every single ionization chamber; this causes a slightly difference between them.
 
 In the following pages, I will show a series of images where there are shown a slice of the dose cube evaluated with matRad and the projection of the position of the 24 chambers, all in CT resolution. Associated to this set of images, there is a graph that reports the actual value in $cGy$ of the ionization chambers for measurements and simulations.
-\newpage
-\begin{figure}[h!]
-\centering
-\subfloat[][\emph{Sagittal plane}]
-{\includegraphics[width=.65\textwidth]{Images/Images/Meas_MR_comparison_01.png}} \quad
-\subfloat[][\emph{Coronal plane}]
-{\includegraphics[width=.65\textwidth]{Images/Images/Meas_MR_comparison_02.png}} \\
-\subfloat[][\emph{Ionization chambers values}]
-{\includegraphics[width=.65\textwidth]{Images/Images/Meas_MR_comparison_03.png}} \quad
-\caption{Results, geometry and comparison from configuration 1}
-\label{fig:pos1}
-\end{figure}
 
 \newpage
 \begin{figure}[h!]
 \centering
-\subfloat[][\emph{Sagittal plane}]
-{\includegraphics[width=.45\textwidth]{Images/Images/Meas_MR_comparison_01.png}} \quad
-\subfloat[][\emph{Coronal plane}]
-{\includegraphics[width=.45\textwidth]{Images/Images/Meas_MR_comparison_02.png}} \\
-\subfloat[][\emph{Ionization chambers values}]
-{\includegraphics[width=.45\textwidth]{Images/Images/Meas_MR_comparison_03.png}} \quad
-\caption{Results, geometry and comparison from configuration 2}
-\label{fig:pos2}
+\subfloat[][\emph{Sagittal plane \#1}]
+{\includegraphics[width=.47\textwidth]{Images/Meas/Meas_MR_comparison_01.png}} \quad
+\subfloat[][\emph{Sagittal plane \#2}]
+{\includegraphics[width=.47\textwidth]{Images/Meas/Meas_MR_comparison_04.png}}\\
+\subfloat[][\emph{Coronal plane \#1}]
+{\includegraphics[width=.47\textwidth]{Images/Meas/Meas_MR_comparison_02.png}} 
+\subfloat[][\emph{Coronal plane \#2}]
+{\includegraphics[width=.47\textwidth]{Images/Meas/Meas_MR_comparison_05.png}} \\
+\subfloat[][\emph{Ionization chambers values \#1}]
+{\includegraphics[width=.47\textwidth]{Images/Meas/Meas_MR_comparison_03_new.png}} \quad
+\subfloat[][\emph{Ionization chambers values \#2}]
+{\includegraphics[width=.47\textwidth]{Images/Meas/Meas_MR_comparison_06.png}} \quad
+\caption{Results, geometry and comparison from configuration 1 and 2}
+\label{fig:pos12}
 \end{figure}
+
+\begin{figure}[h!]
+\centering
+\subfloat[][\emph{Sagittal plane \#3}]
+{\includegraphics[width=.47\textwidth]{Images/Meas/Meas_MR_comparison_07.png}} \quad
+\subfloat[][\emph{Sagittal plane \#4}]
+{\includegraphics[width=.47\textwidth]{Images/Meas/Meas_MR_comparison_10.png}}\\
+\subfloat[][\emph{Coronal plane \#3}]
+{\includegraphics[width=.47\textwidth]{Images/Meas/Meas_MR_comparison_08.png}} 
+\subfloat[][\emph{Coronal plane \#4}]
+{\includegraphics[width=.47\textwidth]{Images/Meas/Meas_MR_comparison_11.png}} \\
+\subfloat[][\emph{Ionization chambers values \#3}]
+{\includegraphics[width=.47\textwidth]{Images/Meas/Meas_MR_comparison_09.png}} \quad
+\subfloat[][\emph{Ionization chambers values \#4}]
+{\includegraphics[width=.47\textwidth]{Images/Meas/Meas_MR_comparison_12.png}} \quad
+\caption{Results, geometry and comparison from configuration 3 and 4}
+\label{fig:pos34}
+\end{figure}
+
+\begin{figure}[h!]
+\centering
+\subfloat[][\emph{Sagittal plane \#5}]
+{\includegraphics[width=.47\textwidth]{Images/Meas/Meas_MR_comparison_13.png}} \quad
+\subfloat[][\emph{Sagittal plane \#6}]
+{\includegraphics[width=.47\textwidth]{Images/Meas/Meas_MR_comparison_16.png}}\\
+\subfloat[][\emph{Coronal plane \#5}]
+{\includegraphics[width=.47\textwidth]{Images/Meas/Meas_MR_comparison_14.png}} 
+\subfloat[][\emph{Coronal plane \#6}]
+{\includegraphics[width=.47\textwidth]{Images/Meas/Meas_MR_comparison_17.png}} \\
+\subfloat[][\emph{Ionization chambers values \#5}]
+{\includegraphics[width=.47\textwidth]{Images/Meas/Meas_MR_comparison_15.png}} \quad
+\subfloat[][\emph{Ionization chambers values \#6}]
+{\includegraphics[width=.47\textwidth]{Images/Meas/Meas_MR_comparison_18.png}} \quad
+\caption{Results, geometry and comparison from configuration 5 and 6}
+\label{fig:pos56}
+\end{figure}
+
+\begin{figure}[h!]
+\centering
+\subfloat[][\emph{Sagittal plane \#7}]
+{\includegraphics[width=.47\textwidth]{Images/Meas/Meas_MR_comparison_19.png}} \quad
+\subfloat[][\emph{Sagittal plane \#8}]
+{\includegraphics[width=.47\textwidth]{Images/Meas/Meas_MR_comparison_22.png}}\\
+\subfloat[][\emph{Coronal plane \#7}]
+{\includegraphics[width=.47\textwidth]{Images/Meas/Meas_MR_comparison_20.png}} 
+\subfloat[][\emph{Coronal plane \#8}]
+{\includegraphics[width=.47\textwidth]{Images/Meas/Meas_MR_comparison_23.png}} \\
+\subfloat[][\emph{Ionization chambers values \#7}]
+{\includegraphics[width=.47\textwidth]{Images/Meas/Meas_MR_comparison_21.png}} \quad
+\subfloat[][\emph{Ionization chambers values \#8}]
+{\includegraphics[width=.47\textwidth]{Images/Meas/Meas_MR_comparison_24.png}} \quad
+\caption{Results, geometry and comparison from configuration 7 and 8}
+\label{fig:pos78}
+\end{figure}
+
+\begin{figure}[h!]
+\centering
+\subfloat[][\emph{Sagittal plane \#9}]
+{\includegraphics[width=.47\textwidth]{Images/Meas/Meas_MR_comparison_25.png}} \\
+\subfloat[][\emph{Coronal plane \#9}]
+{\includegraphics[width=.47\textwidth]{Images/Meas/Meas_MR_comparison_26.png}} \\
+\subfloat[][\emph{Ionization chambers values \#9}]
+{\includegraphics[width=.47\textwidth]{Images/Meas/Meas_MR_comparison_27.png}} \quad
+\caption{Results, geometry and comparison from configuration 9}
+\label{fig:pos9}
+\end{figure}
+
 
 
 \chapter{Discussion} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1483,8 +1574,8 @@ $30^\circ$ & $98.77\%$ & $22.42$ & $96.30\%$ & $48.41$\\
 $45^\circ$ & $96.62\%$ & $33.48$ & $99.90\%$ & $14.13$\\
 \bottomrule
 \end{tabular}
-\label{tab:hom}
 \caption{Results for waterbox phatom analysis}
+\label{tab:hom}
 \end{table}
 
 We have shown the results for four different types of phantoms irradiated with a single proton beam at fixed energy.
@@ -1493,7 +1584,7 @@ The Bragg peaks obtained are not identical for the different algorithms because 
 In the other waterbox cases, we have seen that matRad is still robust in calculating the dose deposited by a beam entering at an angle of $30^\circ$ degrees on a flat surface, while it has failed the test for an  of $45^\circ$ degrees because the beam is centred on the corner of the cube, and as result, the peak is shaped in the same way. This is the main issue of ray-casting-based methods. Instead, fine sampling has shown a good approximation in the $45^\circ$ degrees case because it overcomes the problem of the corner, but it has given poorer results in the other case because of the fact that the weights are higher on the central sub-beams than on the lateral ones. In table \ref{tab:hom}, a general overview of this case is reported.
 
 In the case of inhomogeneous phantom, we have seen how the three methods behave in the cases where the beam encounters a steep lateral gradient (in stopping power) on its path. The dose calculated with matlab appears sharply cut into two parts and there is no smooth transition between them. Then, it becomes evident that they look like two completely independent halves of a Bragg peak.
-By contrast, fine sampling has proven to be affected by the opposite problem. Indeed, a possible transition through a lateral gradient is not taken into account. Therefore, the Bragg peaks generated by the sub-beams cross the plane between the two materials without being affected, reflecting this on the result that shows two peaks across the inhomogeneity that are wider than expected. Concerning the gamma-index test, fine sampling has obtained a slightly better result than matRad, giving a gamma index of $97.68\%$ against the $95.62\%$ found with matRad.
+By contrast, fine sampling has proven to be affected by the opposite problem. Indeed, a possible transition through a lateral gradient is not taken into account. Therefore, the Bragg peaks generated by the sub-beams cross the plane between the two materials without being affected, reflecting this on the result that shows two peaks across the inhomogeneity that are wider than expected. Concerning the gamma-index test, fine sampling has obtained a slightly better result than matRad, giving a gamma index of $97.68\%$ against the $94.24\%$ found with matRad.
 
 \begin{figure}[!t]
 \centering
@@ -1513,19 +1604,47 @@ Case & \multicolumn{2}{c}{matRad} & \multicolumn{2}{c}{fine sampling}\\
 \midrule
  & $\gamma$-index pass rate & max $\%$ diff & $\gamma$-index pass rate & max $\%$ diff\\
 \midrule
-1 & $93.45\%$ & $41.27$ & $98.30\%$ & $12.06$\\
-2 & $93.13\%$ & $45.16$ & $98.57\%$ & $15.66$\\
-3 & $92.49\%$ & $51.32$ & $98.23\%$ & $22.63$\\
-4 & $93.28\%$ & $54.60$ & $96.98\%$ & $35.29$\\
-5 & $95.15\%$ & $58.55$ & $96.00\%$ & $37.46$\\
-6 & $97.87\%$ & $63.66$ & $90.19\%$ & $45.84$\\
+1 & $94.24\%$ & $41.27$ & $97.98\%$ & $12.06$\\
+2 & $93.95\%$ & $45.16$ & $97.83\%$ & $15.66$\\
+3 & $93.52\%$ & $51.32$ & $97.15\%$ & $22.63$\\
+4 & $94.02\%$ & $54.60$ & $95.83\%$ & $35.29$\\
+5 & $95.37\%$ & $58.55$ & $94.96\%$ & $37.46$\\
+6 & $95.33\%$ & $63.66$ & $92.51\%$ & $45.84$\\
 \bottomrule
 \end{tabular}
-\label{tab:air}
 \caption{Results for airbox phatom analysis}
+\label{tab:air}
 \end{table}
 
-Double wedge is the example that gave us the best results, with $100\%$ agreement with Monte Carlo. Unfortunately it is just a lucky case. The outcome is so accurate because of the favourable geometry of the case. 
+
+Single beam double wedge is the example that gave us the best results, with $100\%$ agreement with Monte Carlo. Unfortunately it is just a lucky case. The outcome is so accurate because of the favourable geometry of the case. In fact, that is a case where the most incisive part in the final dose, is constitued by the central sub-beam. That, as we have seen before, is a peculiar property of the pencil beam fine sampling.
+
+The full field test returned interesting results. It really did not gave us new information about the features of the algorithm but gives us a general overview on the behaviour of pencil beam fine sampling in simple full field cases. The comparison between fine sampling and experimental data shows good agreement. 
+The large maximum percentage difference in case number 2, 3 and 4, has its reason in the aforesaid problems with weight and optimization (better explained in section \ref{sec:FFDW}) that could be solved with some improvements in the algorithm. The disagreement with case 5 has the same reason but is amplified by the position of the ionization chambers because is on a higher gradient region.
+As clear in table \ref{tab:FFDW},  in most of the cases, the maximum percentage difference and the standard deviation, between the measured dose and the dose calculated with fine sampling, are globally in line with the others. In particular, it should be compared with the \emph{planned} dose which should be the most accurate one between the four listed methods.
+
+\begin{table}[t]
+\centering
+\begin{tabular}{ccccccccc}
+\toprule
+Case & \multicolumn{2}{c}{matRad} & \multicolumn{2}{c}{Syngo} & \multicolumn{2}{c}{Planned} & \multicolumn{2}{c}{fine sampling}\\
+\midrule
+ & max diff & $\sigma$ & max diff & $\sigma$ & max diff & $\sigma$ & max diff & $\sigma$  \\
+\midrule
+1 & $3.76\%$ & $1.61$ & $3.01\%$ & $0.94$ & $2.92\%$ & $1.08$ & $4.24\%$ & $1.86$\\
+2 & $9.65\%$ & $6.03$ & $11.73\%$ & $7.09$ & $8.72\%$ & $5.95$ & $19.96\%$ & $12.27$\\
+3 & $11.42\%$ & $6.92$ & $9.15\%$ & $5.83$ & $14.33\%$ & $7.92$ & $29.33\%$ & $15.88$\\
+4 & $10.63\%$ & $6.20$ & $14.10\%$ & $7.98$ & $9.41\%$ & $5.81$ & $35.00\%$ & $17.34$\\
+5 & $14.45\%$ & $7.21$ & $9.04\%$ & $5.33$ & $15.88\%$ & $7.49$ & $34.38\%$ & $15.50$\\
+6 & $4.82\%$ & $1.08$ & $4.33\%$ & $1.39$ & $9.11\%$ & $3.68$ & $4.26\%$ & $2.04$\\
+7 & $5.22\%$ & $2.02$ & $7.74\%$ & $2.40$ & $9.60\%$ & $3.46$ & $4.25\%$ & $1.97$\\
+8 & $9.45\%$ & $3.22$ & $13.68\%$ & $4.59$ & $5.96\%$ & $1.92$ & $4.36\%$ & $1.78$\\
+9 & $10.55\%$ & $3.93$ & $13.65\%$ & $5.07$ & $5.69\%$ & $2.15$ & $9.56\%$ & $4.13$\\
+\bottomrule
+\end{tabular}
+\caption{Results for the full field double wedge. Maximum difference in percentage and standar deviation ($\sigma$) in $cGy$}
+\label{tab:FFDW}
+\end{table}
 
 
 \section{Interpretation}
