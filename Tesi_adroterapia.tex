@@ -109,14 +109,48 @@
 {\newpage\thispagestyle{empty}\null\vspace{\stretch{1}}\begin{center}\textbf{Abstract}\\[20pt]}%
 {\end{center}\vspace{\stretch{1}}\null}%
 
+\newenvironment{ackn}%
+{\thispagestyle{empty}\null\vspace{\stretch{1}}\begin{center}\textbf{Acknowledgements}\\[20pt]}%
+{\end{center}\vspace{\stretch{1}}\null}%
+
+\newenvironment{ackn_it}%
+{\thispagestyle{empty}\null\vspace{\stretch{1}}\begin{center}\textbf{Ringraziamenti}\\[20pt]}%
+{\end{center}\vspace{\stretch{1}}\null}%
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newpage
 
+\begin{ackn_it}
+Un grandissimo ringraziamento va la mia Famiglia, i miei amici e Dio per il supporto e la vicinanza che mi hanno dimostrato, fisicamente e spiritualmente, fancendomi prima di tutto crescere come uomo e poi rendendo possibile tutto questo.
 
+Vorrei ringraziare il Prof. Alberto Del Guerra e il Dr. Mark Bangert, miei relatori, per l'aiuto fornitomi in questi mesi e gli insegnamenti che mi hanno donato, che hanno permesso la mia crescita personale e professionale.
+
+Ringrazio Lucas Burigo, collega del dipartimento di Fisica del DKFZ, per avermi fornito tutto il materiale e l'aiuto di cui avevo bisogno per le simulazioni Monte Carlo. E Ringrazio anche miei colleghi e compagni d'ufficio, Hubert, Niklas, Silke and Hans-Peter per il calore dimostrato e il costante aiuto.
+
+Un rigraziamento particolarmente affettuoso va alla dottoressa Maria Elisabetta Giglio che con la sua dedizione al lavoro, il suo supporto instancabile, una stoica sopportazione del sonno e infinita pazienza, ha permesso a questo lavoro di apparire così ai vostri occhi.
+\end{ackn_it}
+
+\begin{ackn}
+andate che vi ci mando!
+\end{ackn}
+
+\newpage
 \begin{abstract}
-The hadrontherapy is a medical therapy based on a new technology allowing to treat cancer without surgery and with contained damages to healthy surrounding tissues. Nowadays, before every treatment, some simulations are run in order to estimate the dose deposition inside the patient. The most accurate softwares for this purpose are Monte Carlo based and simulate the effects for a huge amount of particles requiring a significant amount of computing time. Lately, new methods have been developed, such as the Analytical Probabilistic Modelling, the pencil beam Algorithms and the fine sampling Beam. The aim of this project is to understand, improve and implement the last two of the aforesaid methods by using matRad, and to compare them with the measurements provided by the Heidelberg Ions Therapy Center, the Syngo (Siemens' matRad clone) and the Fluka-based MC simulations. The most peculiar property of the pencil beam Algorithms is the speed, and I figured out that they can be exploited in a new method in order to increase the accuracy of the simulation instead. Then, my work focuses on the realization of this new software based on the pencil beam Algorithms. The first of the three steps of this work is to compare matRad, the Fine sampling (FS) algorithm and the Monte Carlo simulations for simple cases, i.e., in water environment and with some inhomogeneities. Then, I show the results for some cases of the Spread-Out Bragg Peaks and finally, for some full fields simulations either for matRad and FS and Syngo. 
+Hadrontherapy is a medical therapy based on a new technology allowing to treat cancer without surgery and with contained damages to healthy surrounding tissues. Nowadays, before every treatment, some simulations are run in order to estimate the dose deposition inside the patient. This is called treatment planning and it is one of the core parts of the treatment. 
+The most accurate algorithms for this purpose are Monte Carlo based and simulate the effects for a huge amount of particles requiring a significant amount of computing time. New methods have been developed, such as pencil beam algorithms and pencil beam fine sampling. The aim of this project is to understand, improve and implement the last of the aforesaid methods by using matRad, and to compare them with the measurements provided by the Heidelberg Ion-Beam Therapy Center, Syngo RT planning (the Sienec treatment planning system used for clinical operation at HIT) and Fluka-based MC simulations. The most peculiar property of the pencil beam algorithms is the speed, so I worked on a method that allow to increase the accuracy of the simulation instead. Then, my work focuses on the realization of this new software based on the pencil beam algorithms. The first of the three steps of this work is to compare matRad, the fine sampling (FS) algorithm and the Monte Carlo simulations for simple cases, i.e., in water environment and with some inhomogeneities. Then, I show the results for some cases of the spread-out Bragg peaks and finally, for a full field simulation either for matRad, FS and Syngo. 
 
-%As I show in this work... (preliminary rough overview of the result)
+The aim of these work is to determine if pencil beam fine sampling is enough accurate and reliable. 
+So, the first step is to test it in a simple water environment that has the aim to test the method in order to show the presence of any mistakes in the code and has given back a very good agreement with montecarlo. 
+After that, the software will be tested in phantoms with inhomogeneities in order to check how the three methods behave in the cases where the beam encounters a steep lateral gradient (in stopping power) on its path.
+The last step of this thesis is to check the compatibility of our prediction with the real measurements. These are our gold standard and this is the final test that every software has to overcome to be consider a good predictor.
+Unfortunately, few single beam cases and only one single full field case is not enough to assess its reliability but enough to check its consinsency.
+
+What we globally see from the results is that pencil beam and fine sampling behave in complete opposite ways. About the physical shape of the peak, we can assert that none of the two methods have yielded substantial results. For the reasons that I wil explained in this thesis, pencil beam has been proven to depend too much on the shape of the phantom, sometimes being a bit contrived. Moreover, fine sampling takes into account too much on the path of the central part of the beam, that means it cares less about the inhomogeneities nearby the trajectory.
+We will see that pencil beam and pencil beam fine sampling are two methods with significant differences, with opposite strengths but almost equivalent in accuracy. And that the Monte Carlo simulations has been halfway in between pencil beam and fine sampling, in almost all the cases.
+
+Furthermore, all our deductions were compared with important articles in this field. The obtained results are in line with other studies, so it ensures us that the research we have made is in the right direction.
+
+In conclusion, I think that, even the good results obtained, the application possibilities of pencil beam fine sampling are a few, even with all the possible improvements. My proposal is to acquire what we have learned from this work and use it in order to design a new algorithm that does not need ray casting and with an approach more similar to Monte Carlo. From what I have learned during this thesis, I think the world of the dose calculation is moving towards simulations based on Monte Carlo methods and GPU computing. There is the need of novelty in dose calculation and that might be the starting point.
 
 \end{abstract}
 
@@ -524,7 +558,7 @@ The software we used does the opposite. Before, it randomly determines the free 
 Then, it chooses the process that occurs earlier.
 For example, let us consider a particle that starts from a point $x_0$; after establishing all the $n$ possible interaction processes that the particle can undergo, the software simulates the walk of the particle $n$ times, from $x_0$ to the $x_i$ (point where the i-th interaction process happens). At the end, it takes $\min(\{ x_i-x_0 \})$ as the free path of the particle and the i-th interaction as the occurring one.
 
-
+I 
 %Add something..... %%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%da riscrivere ultima parte. scrivere i nomi delle sigle o aggiungi le sigle quando citi i nomi precedentemente. questo anche nella parte successiva,
 
@@ -1418,10 +1452,10 @@ This section exposes the predictions made with matRad, Syngo and pencil beam fin
 \label{fig:FFDW}
 \end{figure}
 
-As one can see from the comparison from matRad and Syngo (figure \ref{fig:FFDWgam_ms}), the two methods are almost equivalent, apart for small differences on the entrance surface. Both show an excess of dose after the maximum on the right side of the beam, where the entering angle is larger and equal to $60^\circ$. That is clearly an artifact that should not appear and it is caused by the tendency of pencil beam of reproducing the aspect of the entering surface on the Bragg peak, already treated before.
-We can see that fine sampling has a non-homogeneous dose distribution on the target area. It shows a peak on the right side of the beam (marked as red in figure \ref{fig:FFDW_fs}). This effect derives from two main problems: \emph{i)} the central sub-beams contribute more that the others, implicating that the Bragg peak of each pencil beam is emphasized and the dose distribution is no more flat but it somehow oscillates (figure \ref{fig:FFDWprof_cdp}); \emph{ii)} the optimization of this plan was made using Syngo as reference, that means that the intensity and the position of every pencil beam was chosen in order to have a flat dose distribution on the target, with that software.
-In the gamma-index test (figure \ref{fig:FFDWgam_mf}), the area with the gratest number of voxel failing the test is the one where this effect is more visible.
-In the integrated depth-dose profile, in figure \ref{fig:FFDWprof_ddp}, fine sampling has a steep decrease in dose after a peak, instead matRad and Syngo show a smoother transiction to zero caused by the aforesaid artifact. The expected result should be halfway between the two interpretations.
+As one can see from the comparison from matRad and Syngo (figure \ref{fig:FFDWgam_ms}), the two methods are almost equivalent, except for small differences on the entrance surface. Both of them show an excess of dose after the maximum on the right side of the beam, where the entering angle is larger and equal to $60^\circ$. This is clearly an artifact that should not appear and it is caused by the tendency of pencil beam of reproducing the aspect of the entrance surface on the Bragg peak, already treated before.
+We can see that fine sampling has a non-homogeneous dose distribution on the target area. It shows a peak on the right side of the beam (marked as red in figure \ref{fig:FFDW_fs}). This effect derives from two main problems: \emph{i)} the central sub-beams contribute more than the others, which implies that the Bragg peak of each pencil beam is emphasized and the dose distribution is no more flat but it oscillates somehow (figure \ref{fig:FFDWprof_cdp}); \emph{ii)} the optimisation of this plan was made using Syngo as reference, that means that the intensity and the position of every pencil beam was chosen in order to have a flat dose distribution on the target with that software.
+In the gamma-index test (figure \ref{fig:FFDWgam_mf}), the area with the greatest number of voxel failing the test is the one where this effect is more visible.
+In the integrated depth-dose profile, in figure \ref{fig:FFDWprof_ddp}, fine sampling shows a steep decrease in dose after a peak, while matRad and Syngo show a smoother transition to zero caused by the aforesaid artifact. The expected result should be halfway between the two interpretations.
 Finally, figure \ref{fig:FFDWprof_peak} shows the slice of the dose cube where there is the maximum dose deposition  for fine sampling. The excess in dose for fine sampling coincides with a fluctuation of dose for both the pencil beam methods. These are crests parallel to the phantom surface, more visible in matRad dose deposition. The reason of this effect is also connected to the principles of ray casting. In order to legitimate that, in figure \ref{fig:FFDWprof_peak2}, are shown the profiles inside the target region but on lines parallel to the surface. In that case, we do not see any fluctuation.
 
 \begin{figure}[!t]
@@ -1464,11 +1498,11 @@ Finally, figure \ref{fig:FFDWprof_peak} shows the slice of the dose cube where t
 
 
 \subsection{Measurements}
-The last step of this thesis is to check the compatibility of our prediction with the real measurements. These are our gold standard and this is the final test that every software has to overcome to be consider a good predictor.
+The last step of this thesis is to verify the compatibility of our prediction with the real measurements. These are our gold standard and this is the final test that every software has to overcome in order to be considered as a good predictor.
 
-As said before, the detector inside Double Wedges Phantom has been placed in 9 different positions and, for each of them, I have the dose value measured in every chamber and the one predicted by Syngo. In this case, the simulation with Syngo has been made in two different ways. The first simulates the whole proton beam and the dose deposition inside the CT-cube (it works in the same way as matRad does), then from this cube the values of dose in the areas covered by every single chamber are extracted, I will refer to this one as \emph{Planned}. The second one, referred as Syngo, evaluates the dose directly inside the area covered by every single ionization chamber; this causes a slightly difference between them.
+As it was said before, the detector inside double wedges phantom has been placed in 9 different positions and, for each of them, I have the dose value measured in every chamber and the one predicted by Syngo. In this case, the simulation with Syngo has been made in two different ways. The first one simulates the whole proton beam and the dose deposition inside the CT-cube (it works in the same way as matRad). Then, from this cube, the values of dose in the areas covered by every single chamber are extracted (I will refer to this one as \emph{Planned}). The second one, referred as Syngo, evaluates the dose directly inside the area covered by every single ionization chamber. This causes a slightly difference between them.
 
-In the following pages, I will show a series of images where there are shown a slice of the dose cube evaluated with matRad and the projection of the position of the 24 chambers, all in CT resolution. Associated to this set of images, there is a graph that reports the actual value in $cGy$ of the ionization chambers for measurements and simulations.
+In the following pages, I will show a series of images showing a slice of the dose cube evaluated with matRad and the projection of the position of the 24 chambers, all in CT resolution. Associated to this set of images, there is a graph that reports the actual value in $cGy$ of the ionization chambers for measurements and simulations.
 
 \newpage
 \begin{figure}[h!]
@@ -1581,7 +1615,7 @@ $45^\circ$ & $96.62\%$ & $33.48$ & $99.90\%$ & $14.13$\\
 We have shown the results for four different types of phantoms irradiated with a single proton beam at fixed energy.
 In the case of the waterbox phantom, we have proved that there is a very good agreement between matRad, fine sampling and Monte Carlo for a beam entering at $0^\circ$ degree. The gamma-index test is over $99.9\%$ and the maximum percentage difference is less than $5\%$ for both the methods used. This result is due to a light shift in the depth.
 The Bragg peaks obtained are not identical for the different algorithms because the look-up tables of matRad and, consequently, of fine sampling are obtained by using a Monte Carlo based software that works in a slightly different way compared to FLUKA.
-In the other waterbox cases, we have seen that matRad is still robust in calculating the dose deposited by a beam entering at an angle of $30^\circ$ degrees on a flat surface, while it has failed the test for an  of $45^\circ$ degrees because the beam is centred on the corner of the cube, and as result, the peak is shaped in the same way. This is the main issue of ray-casting-based methods. Instead, fine sampling has shown a good approximation in the $45^\circ$ degrees case because it overcomes the problem of the corner, but it has given poorer results in the other case because of the fact that the weights are higher on the central sub-beams than on the lateral ones. In table \ref{tab:hom}, a general overview of this case is reported.
+In the other waterbox cases, we have seen that matRad is still robust in calculating the dose deposited by a beam entering at an angle of $30^\circ$ degrees on a flat surface, while it has failed the test for an  of $45^\circ$ degrees because the beam is centred on the corner of the cube and, as result, the peak is shaped in the same way. This is the main issue of ray-casting-based methods. Instead, fine sampling has shown a good approximation in the $45^\circ$ degrees case because it overcomes the problem of the corner, but it has given poorer results in the other case because of the fact that the weights are higher on the central sub-beams than on the lateral ones. In table \ref{tab:hom}, a general overview of this case is reported.
 
 In the case of inhomogeneous phantom, we have seen how the three methods behave in the cases where the beam encounters a steep lateral gradient (in stopping power) on its path. The dose calculated with matlab appears sharply cut into two parts and there is no smooth transition between them. Then, it becomes evident that they look like two completely independent halves of a Bragg peak.
 By contrast, fine sampling has proven to be affected by the opposite problem. Indeed, a possible transition through a lateral gradient is not taken into account. Therefore, the Bragg peaks generated by the sub-beams cross the plane between the two materials without being affected, reflecting this on the result that shows two peaks across the inhomogeneity that are wider than expected. Concerning the gamma-index test, fine sampling has obtained a slightly better result than matRad, giving a gamma index of $97.68\%$ against the $94.24\%$ found with matRad.
@@ -1617,10 +1651,10 @@ Case & \multicolumn{2}{c}{matRad} & \multicolumn{2}{c}{fine sampling}\\
 \end{table}
 
 
-Single beam double wedge is the example that gave us the best results, with $100\%$ agreement with Monte Carlo. Unfortunately it is just a lucky case. The outcome is so accurate because of the favourable geometry of the case. In fact, that is a case where the most incisive part in the final dose, is constitued by the central sub-beam. That, as we have seen before, is a peculiar property of the pencil beam fine sampling.
+Single beam double wedge is the example that gave us the best results, with $100\%$ agreement with Monte Carlo. Unfortunately, it is just a lucky case. The outcome is so accurate because of the favourable geometry of the case we have considered. In fact, that is a case where the most incisive part in the final dose is constitued by the central sub-beam. That, as we have seen before, is a peculiar property of the pencil beam fine sampling.
 
 The full field test returned interesting results. It really did not gave us new information about the features of the algorithm but gives us a general overview on the behaviour of pencil beam fine sampling in simple full field cases. The comparison between fine sampling and experimental data shows good agreement. 
-The large maximum percentage difference in case number 2, 3 and 4, has its reason in the aforesaid problems with weight and optimization (better explained in section \ref{sec:FFDW}) that could be solved with some improvements in the algorithm. The disagreement with case 5 has the same reason but is amplified by the position of the ionization chambers because is on a higher gradient region.
+The large maximum percentage difference in case number 2, 3 and 4, has its reason in the aforesaid problems with weight and optimisation (better explained in section \ref{sec:FFDW}) that could be solved with some improvements in the algorithm. The disagreement with case 5 has the same reason but is amplified by the position of the ionization chambers because is on a higher gradient region.
 As clear in table \ref{tab:FFDW},  in most of the cases, the maximum percentage difference and the standard deviation, between the measured dose and the dose calculated with fine sampling, are globally in line with the others. In particular, it should be compared with the \emph{planned} dose which should be the most accurate one between the four listed methods.
 
 \begin{table}[t]
