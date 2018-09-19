@@ -1,4 +1,4 @@
-\documentclass[12pt, a4paper, twoside]{book}
+\documentclass[12pt, a4paper, oneside]{book}
 \usepackage[utf8]{inputenc}
 \usepackage{hyperref}
 \usepackage{graphicx}
@@ -11,6 +11,9 @@
 \usepackage{comment}
 \usetikzlibrary{shapes.geometric, arrows}
 %\linenumbers
+\usepackage[a4paper]{geometry}
+\geometry{left=4cm}
+\geometry{right=3cm}
 
 \tikzstyle{arrow} = [thick,->,>=stealth]
 \tikzstyle{startstop} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=red!30]
@@ -82,7 +85,7 @@
   \title{Research on the dosimetric accuracy of pencil beam fine sampling for radiation proton dose calculation}
   \author{Giuseppe \textsc{Pezzano}}
   \email{gpp.pezzano@gmail.com}
-  \date{19 July 2018}
+  \date{19 September 2018}
   \location{Pisa}
   \blurb{Università di Pisa\\
   Dipartimento di Fisica Enrico Fermi\\
@@ -131,26 +134,23 @@ Un rigraziamento particolarmente affettuoso va alla dottoressa Maria Elisabetta 
 \end{ackn_it}
 
 \begin{ackn}
-andate che vi ci mando!
+I want to thank my family, my friends and God for the support and the love they have given to me practically and spiritually, making me grow as a man and letting all this happen.
+
+I thank Prof. Alberto Del Guerra and Dr. Mark Bangert, my supervisors, for helping me during these months and the knowledge they have transmitted to me, giving strong basis for my personal growth as scientist.
+
+I want to thank Lucas Burigo, collegue of mine at the Physics department of the DKFZ, for all the material and the help he has given to me for the Monte Carlo simulations. I also thank all the other collegues, Hubert, Niklas, Silke and Hans-Peter for the constant support.
+
+A special thank goes to Dr. Maria Elisabetta Giglio whose strong dedication, support, patience and love have allowed this work to be as it looks like now.
 \end{ackn}
 
 \newpage
 \begin{abstract}
-Hadrontherapy is a medical therapy based on a new technology allowing to treat cancer without surgery and with contained damages to healthy surrounding tissues. Nowadays, before every treatment, some simulations are run in order to estimate the dose deposition inside the patient. This is called treatment planning and it is one of the core parts of the treatment. 
-The most accurate algorithms for this purpose are Monte Carlo based and simulate the effects for a huge amount of particles requiring a significant amount of computing time. New methods have been developed, such as pencil beam algorithms and pencil beam fine sampling. The aim of this project is to understand, improve and implement the last of the aforesaid methods by using matRad, and to compare them with the measurements provided by the Heidelberg Ion-Beam Therapy Center, Syngo RT planning (the Sienec treatment planning system used for clinical operation at HIT) and Fluka-based MC simulations. The most peculiar property of the pencil beam algorithms is the speed, so I worked on a method that allow to increase the accuracy of the simulation instead. Then, my work focuses on the realization of this new software based on the pencil beam algorithms. The first of the three steps of this work is to compare matRad, the fine sampling (FS) algorithm and the Monte Carlo simulations for simple cases, i.e., in water environment and with some inhomogeneities. Then, I show the results for some cases of the spread-out Bragg peaks and finally, for a full field simulation either for matRad, FS and Syngo. 
-
-The aim of these work is to determine if pencil beam fine sampling is enough accurate and reliable. 
-So, the first step is to test it in a simple water environment that has the aim to test the method in order to show the presence of any mistakes in the code and has given back a very good agreement with montecarlo. 
-After that, the software will be tested in phantoms with inhomogeneities in order to check how the three methods behave in the cases where the beam encounters a steep lateral gradient (in stopping power) on its path.
-The last step of this thesis is to check the compatibility of our prediction with the real measurements. These are our gold standard and this is the final test that every software has to overcome to be consider a good predictor.
-Unfortunately, few single beam cases and only one single full field case is not enough to assess its reliability but enough to check its consinsency.
-
-What we globally see from the results is that pencil beam and fine sampling behave in complete opposite ways. About the physical shape of the peak, we can assert that none of the two methods have yielded substantial results. For the reasons that I wil explained in this thesis, pencil beam has been proven to depend too much on the shape of the phantom, sometimes being a bit contrived. Moreover, fine sampling takes into account too much on the path of the central part of the beam, that means it cares less about the inhomogeneities nearby the trajectory.
-We will see that pencil beam and pencil beam fine sampling are two methods with significant differences, with opposite strengths but almost equivalent in accuracy. And that the Monte Carlo simulations has been halfway in between pencil beam and fine sampling, in almost all the cases.
-
-Furthermore, all our deductions were compared with important articles in this field. The obtained results are in line with other studies, so it ensures us that the research we have made is in the right direction.
-
-In conclusion, I think that, even the good results obtained, the application possibilities of pencil beam fine sampling are a few, even with all the possible improvements. My proposal is to acquire what we have learned from this work and use it in order to design a new algorithm that does not need ray casting and with an approach more similar to Monte Carlo. From what I have learned during this thesis, I think the world of the dose calculation is moving towards simulations based on Monte Carlo methods and GPU computing. There is the need of novelty in dose calculation and that might be the starting point.
+Hadrontherapy is a medical therapy based on a new technology allowing to treat cancer without surgery and with contained damages to healthy surrounding tissues. Nowadays, the so-called treatment planning is the core of every therapy and consists in run simulations in order to estimate the dose deposition inside the patient before the real treatment occurs.\\ 
+The most accurate algorithms designed for this purpose are Monte Carlo-based and simulate the effects for a huge amount of particles, requiring a significant amount of computing time. New methods have been developed, such as pencil beam algorithms and pencil beam fine sampling. The aim of this project is to understand, improve and implement pencil beam fine sampling by using matRad and to compare different methods with the measurements provided by the Heidelberg Ion-Beam Therapy Center (HIT), Syngo RT planning (the Sienec treatment planning system used for clinical operation at HIT) and Fluka-based MC simulations.\\
+The most peculiar property of the pencil beam algorithms is the high speed. For this reason, we have focused on developing a new software based on the pencil beam algorithms which instead allows to increase the accuracy of the simulation. The starting point of this work is the comparison between matRad, fine sampling (FS) algorithm and Monte Carlo simulations run for simple cases considering environments based on both water and inhomogeneities. Then, we show the results of the spread-out Bragg peaks and for full field simulation run with matRad, FS and Syngo.\\
+The aim of this thesis is to determine if pencil beam fine sampling is enough accurate and reliable so as to be used in treatment planning. First, we have considered a simple water environment whose aim is to test the method so as to show the presence of any mistakes in the code and the results have proved a very good agreement with Monte Carlo simulations. Second, the software has been tested by considering phantoms with inhomogeneities in order to check how the three methods behave in the cases where the beam encounters a steep lateral gradient (in stopping power) on its path. As last, we have verified the compatibility of our prediction with the real measurements. These are our gold standard and this is the final test that every software has to overcome so as to be considered as a good predictor. Unfortunately, few single beam cases and only one single full field case is not enough to assess the reliability of the software, but it is enough to assert its consistency.\\
+What globally emerges from our results is that pencil beam and fine sampling behave in complete opposite ways and that neither of them have yielded substantial results concerning the physical shape of the peak. Pencil beam has been proven to excessively depend on the shape of the phantom, sometimes being a bit contrived. Moreover, fine sampling takes into account too much on the path of the central part of the beam, that means it takes care less of the inhomogeneities nearby the trajectory. We show that pencil beam and pencil beam fine sampling are two methods with significant differences, opposite strengths but almost equivalent in terms of accuracy. The Monte Carlo simulations has been halfway in between pencil beam and fine sampling in almost all the cases. However, the obtained results are consistent with other studies, ensuring us that the our research is going in the right direction.\\
+The application possibilities of pencil beam fine sampling are a few, even with all the possible improvements. My proposal is to acquire what we have learned from this work and use it in order to design a new algorithm that does not need ray casting and with an approach more similar to Monte Carlo. From what I have learned during this thesis, I think the world of the dose calculation is moving towards simulations based on Monte Carlo methods and GPU computing. There is the need of novelty in dose calculation and that might be the starting point for the future.
 
 \end{abstract}
 
@@ -816,6 +816,7 @@ The colleagues of the Heidelberg Ion-Beam Therapy Center collected data from mea
 \end{figure}
 
 \subsection{Double Wedge} 
+\label{sec:dwphant}
 The Double Wedges is a particular kind of phantom built by HIT colleagues with the aim of testing the effects of the treatment through a surface that has a considerable slope at the entrance surface. 
 Figure \ref{fig:doublew} represents the CT of this phantom. The light blue box is the limit of the matrix and its dimensions are $512\times512\times390\,mm$. The black line is the direction of the beam and points towards $-x$ direction (or in other words, from the air side toward the water). The line passes though a point called \emph{Isocenter} and marked with a red cross (only visible in the right image). It represents the center of the axis in the machine reference system.
 The actual phantom is a parallelepiped of plastic (with a known attenuation coefficient) filled with water. Its dimensions are around $500\times200\times350\,mm^3$. Along the beam direction, with comparable dimensions, there is a \emph{double wedge}, i.e., a couple of triangular plastic attenuators of $1.165$ relative stopping power. These attenuators have a gradient of $30^\circ$ and $60^\circ$, respectively.
@@ -857,7 +858,7 @@ To have a better prospective on the comparison between high gradient curves,
 {\includegraphics[width=0.45\textwidth]{Images/prof}}
 \caption{Profiles example}
 \label{fig:prof}
-\vspace{-10mm}
+\vspace{-5mm}
 \end{wrapfigure}
 \noindent one should look at dose profiles. 
 These are the dose values taken from a line of voxels and plotted in relation to their position. For example, if I want to see the dose profile along the center of the beam, I should select the dose value of the voxels traversed by the beam axis and plot them with their corresponding position.
@@ -1173,7 +1174,7 @@ None of the two approaches (MR and FS) is correct, because they create artefacts
 
 From the lateral profiles, we can get more interesting information. The shape of the MC peaks is well interpreted by FS for the first cases, while in the last cases evolves and slowly approaches the shape of MR (especially on the side without air-pocket).
 
-\begin{figure}[!ht]
+\begin{figure}[!p]
 \centering
 \subfloat[][\emph{\scriptsize Central Dose profile}]
 {\includegraphics[width=.32\textwidth]{Images/mR_FSBvsMC_pub_airbox/mR_FSBvsMC_pub_airbox_21}} 
@@ -1191,7 +1192,7 @@ From the lateral profiles, we can get more interesting information. The shape of
 \label{fig:AB2prof}
 \end{figure}
 
-\begin{figure}[!ht]
+\begin{figure}[!p]
 \centering
 \subfloat[][\emph{\scriptsize Central Dose profile}]
 {\includegraphics[width=.32\textwidth]{Images/mR_FSBvsMC_pub_airbox/mR_FSBvsMC_pub_airbox_73}\label{fig:AB6prof_app}} 
@@ -1209,7 +1210,7 @@ From the lateral profiles, we can get more interesting information. The shape of
 \label{fig:AB6prof}
 \end{figure}
 
-\begin{figure}[!ht]
+\begin{figure}[!p]
 \centering
 \subfloat[][\emph{Percentage\\ difference}]
 {\includegraphics[width=.25\textwidth]{Images/mR_FSBvsMC_pub_airbox/mR_FSBvsMC_pub_airbox_17}} 
@@ -1223,7 +1224,7 @@ From the lateral profiles, we can get more interesting information. The shape of
 \label{fig:AB2gam}
 \end{figure}
 
-\begin{figure}[!ht]
+\begin{figure}[!p]
 \centering
 \subfloat[][\emph{Percentage\\ difference}]
 {\includegraphics[width=.25\textwidth]{Images/mR_FSBvsMC_pub_airbox/mR_FSBvsMC_pub_airbox_69}} 
@@ -1269,7 +1270,7 @@ Comparing the lateral profiles of the second peak in the two cases (figures \ref
 \caption{Dose deposition in Soukup phantom at $125\,MeV$.}
 \label{fig:SB2}
 \end{figure}
-\begin{figure}[!t]
+\begin{figure}[!p]
 \centering
 \subfloat[][\emph{Percentage\\ difference}]
 {\includegraphics[width=.24\textwidth]{Images/mR_FSBvsMC_pub_soukup/mR_FSBvsMC_pub_soukup_04}} 
@@ -1282,7 +1283,7 @@ Comparing the lateral profiles of the second peak in the two cases (figures \ref
 \caption{Comparison between Fine Sampling Beam and Monte Carlo Simulations (left), MatRad and Monte Carlo Simulations (right) in Soukup phantom at $172\,MeV$.}
 \label{fig:SB1gam}
 \end{figure}
-\begin{figure}[!t]
+\begin{figure}[!p]
 \centering
 \subfloat[][\emph{Percentage\\ difference}]
 {\includegraphics[width=.24\textwidth]{Images/mR_FSBvsMC_pub_soukup/mR_FSBvsMC_pub_soukup_17}} 
@@ -1295,7 +1296,7 @@ Comparing the lateral profiles of the second peak in the two cases (figures \ref
 \caption{Comparison between Fine Sampling Beam and Monte Carlo Simulations (left), MatRad and Monte Carlo Simulations (right) in Soukup phantom at $125\,MeV$.}
 \label{fig:SB2gam}
 \end{figure}
-\begin{figure}[!t]
+\begin{figure}[!p]
 \centering
 \subfloat[][\emph{\scriptsize Central Dose profile}]
 {\includegraphics[width=.32\textwidth]{Images/mR_FSBvsMC_pub_soukup/mR_FSBvsMC_pub_soukup_08}} 
@@ -1312,7 +1313,7 @@ Comparing the lateral profiles of the second peak in the two cases (figures \ref
 \caption{Profiles in Soukup phantom simulation at $172\,MeV$.}
 \label{fig:SB1prof}
 \end{figure}
-\begin{figure}[!t]
+\begin{figure}[!p]
 \centering
 \subfloat[][\emph{\scriptsize Central Dose profile}]
 {\includegraphics[width=.32\textwidth]{Images/mR_FSBvsMC_pub_soukup/mR_FSBvsMC_pub_soukup_21}} 
@@ -1439,7 +1440,7 @@ Particular attention has to be paid to the profiles of the peaks (figure \ref{fi
 \section{Realistic Treatment Fields}
 \subsection{Double Wedge}
 \label{sec:FFDW}
-This section exposes the predictions made with matRad, Syngo and pencil beam fine sampling and shows the comparison between them by using the $\gamma$-index test and difference map. In figure \ref{fig:FFDW} are shown the slices of a sagittal plane of the phantom passing through the isocenter of the CT-cube.
+This section exposes the predictions made with matRad, Syngo and pencil beam fine sampling and shows the comparison between them by using the $\gamma$-index test and difference map. In figure \ref{fig:FFDW} are shown the slices of a sagittal plane of the phantom passing through the isocenter of the CT-cube. The geometry of this phantom is explained in section \ref{sec:dwphant}.
 \begin{figure}[!h]
 \centering
 \subfloat[][\emph{matRad}]
@@ -1491,7 +1492,7 @@ Finally, figure \ref{fig:FFDWprof_peak} shows the slice of the dose cube where t
 {\includegraphics[width=.48\textwidth]{Images/Images_doublew/mR_FSBvsMC_pub_doublew_14}}
 \subfloat[][\emph{\scriptsize Surface peak profile}]
 {\includegraphics[width=.48\textwidth]{Images/Images_doublew/mR_FSBvsMC_pub_doublew_15}\label{fig:FFDWprof_peak2}}\\
-\caption{Profiles in full field double wedge phantom simulation.}
+\caption{Profiles in full field double wedge phantom simulation. The \emph{surface} profile indicates the profile on a plane parallel to the entrering surface.}
 \label{fig:FFDWprof}
 \end{figure}
 
@@ -1502,7 +1503,9 @@ The last step of this thesis is to verify the compatibility of our prediction wi
 
 As it was said before, the detector inside double wedges phantom has been placed in 9 different positions and, for each of them, I have the dose value measured in every chamber and the one predicted by Syngo. In this case, the simulation with Syngo has been made in two different ways. The first one simulates the whole proton beam and the dose deposition inside the CT-cube (it works in the same way as matRad). Then, from this cube, the values of dose in the areas covered by every single chamber are extracted (I will refer to this one as \emph{Planned}). The second one, referred as Syngo, evaluates the dose directly inside the area covered by every single ionization chamber. This causes a slightly difference between them.
 
-In the following pages, I will show a series of images showing a slice of the dose cube evaluated with matRad and the projection of the position of the 24 chambers, all in CT resolution. Associated to this set of images, there is a graph that reports the actual value in $cGy$ of the ionization chambers for measurements and simulations.
+In the following pages, I will show a series of images showing a slice of the dose cube evaluated with matRad and the projection of the position of the 24 chambers, all in CT resolution. There is also a 3D visualization that shows the position of the chambers inside the area of the deposited dose plotted in form of iso-surfaces corresponding to a dose equal to the $10\%$, $30\%$, $50\%$, $70\%$ and $90\%$ percent of the maximum dose, in scale from blue to red.
+Associated to this set of images, there is a graph that reports the actual value in $cGy$ of the ionization chambers for measurements and simulations.
+I will comment the results in the next chapter.
 
 \newpage
 \begin{figure}[h!]
@@ -1519,7 +1522,7 @@ In the following pages, I will show a series of images showing a slice of the do
 {\includegraphics[width=.47\textwidth]{Images/Meas/Meas_MR_comparison_03_new.png}} \quad
 \subfloat[][\emph{Ionization chambers values \#2}]
 {\includegraphics[width=.47\textwidth]{Images/Meas/Meas_MR_comparison_06.png}} \quad
-\caption{Results, geometry and comparison from configuration 1 and 2}
+\caption{Dose calculated with matRad, geometry and comparison from configuration 1 and 2}
 \label{fig:pos12}
 \end{figure}
 
@@ -1537,7 +1540,7 @@ In the following pages, I will show a series of images showing a slice of the do
 {\includegraphics[width=.47\textwidth]{Images/Meas/Meas_MR_comparison_09.png}} \quad
 \subfloat[][\emph{Ionization chambers values \#4}]
 {\includegraphics[width=.47\textwidth]{Images/Meas/Meas_MR_comparison_12.png}} \quad
-\caption{Results, geometry and comparison from configuration 3 and 4}
+\caption{Dose calculated with matRad, geometry and comparison from configuration 3 and 4}
 \label{fig:pos34}
 \end{figure}
 
@@ -1555,7 +1558,7 @@ In the following pages, I will show a series of images showing a slice of the do
 {\includegraphics[width=.47\textwidth]{Images/Meas/Meas_MR_comparison_15.png}} \quad
 \subfloat[][\emph{Ionization chambers values \#6}]
 {\includegraphics[width=.47\textwidth]{Images/Meas/Meas_MR_comparison_18.png}} \quad
-\caption{Results, geometry and comparison from configuration 5 and 6}
+\caption{Dose calculated with matRad, geometry and comparison from configuration 5 and 6}
 \label{fig:pos56}
 \end{figure}
 
@@ -1573,7 +1576,7 @@ In the following pages, I will show a series of images showing a slice of the do
 {\includegraphics[width=.47\textwidth]{Images/Meas/Meas_MR_comparison_21.png}} \quad
 \subfloat[][\emph{Ionization chambers values \#8}]
 {\includegraphics[width=.47\textwidth]{Images/Meas/Meas_MR_comparison_24.png}} \quad
-\caption{Results, geometry and comparison from configuration 7 and 8}
+\caption{Dose calculated with matRad, geometry and comparison from configuration 7 and 8}
 \label{fig:pos78}
 \end{figure}
 
@@ -1585,7 +1588,7 @@ In the following pages, I will show a series of images showing a slice of the do
 {\includegraphics[width=.47\textwidth]{Images/Meas/Meas_MR_comparison_26.png}} \\
 \subfloat[][\emph{Ionization chambers values \#9}]
 {\includegraphics[width=.47\textwidth]{Images/Meas/Meas_MR_comparison_27.png}} \quad
-\caption{Results, geometry and comparison from configuration 9}
+\caption{Dose calculated with matRad, geometry and comparison from configuration 9}
 \label{fig:pos9}
 \end{figure}
 
@@ -1617,13 +1620,13 @@ In the case of the waterbox phantom, we have proved that there is a very good ag
 The Bragg peaks obtained are not identical for the different algorithms because the look-up tables of matRad and, consequently, of fine sampling are obtained by using a Monte Carlo based software that works in a slightly different way compared to FLUKA.
 In the other waterbox cases, we have seen that matRad is still robust in calculating the dose deposited by a beam entering at an angle of $30^\circ$ degrees on a flat surface, while it has failed the test for an  of $45^\circ$ degrees because the beam is centred on the corner of the cube and, as result, the peak is shaped in the same way. This is the main issue of ray-casting-based methods. Instead, fine sampling has shown a good approximation in the $45^\circ$ degrees case because it overcomes the problem of the corner, but it has given poorer results in the other case because of the fact that the weights are higher on the central sub-beams than on the lateral ones. In table \ref{tab:hom}, a general overview of this case is reported.
 
-In the case of inhomogeneous phantom, we have seen how the three methods behave in the cases where the beam encounters a steep lateral gradient (in stopping power) on its path. The dose calculated with matlab appears sharply cut into two parts and there is no smooth transition between them. Then, it becomes evident that they look like two completely independent halves of a Bragg peak.
+In the case of inhomogeneous phantom, we have seen how the three methods behave in the cases where the beam encounters a steep lateral gradient (in stopping power) on its path. The dose calculated with matRad appears sharply cut into two parts and there is no smooth transition between them. Then, it becomes evident that they look like two completely independent halves of a Bragg peak.
 By contrast, fine sampling has proven to be affected by the opposite problem. Indeed, a possible transition through a lateral gradient is not taken into account. Therefore, the Bragg peaks generated by the sub-beams cross the plane between the two materials without being affected, reflecting this on the result that shows two peaks across the inhomogeneity that are wider than expected. Concerning the gamma-index test, fine sampling has obtained a slightly better result than matRad, giving a gamma index of $97.68\%$ against the $94.24\%$ found with matRad.
 
 \begin{figure}[!t]
 \centering
 {\includegraphics[width=.83\textwidth]{Images/gammacase}} 
-\caption{Gamma index in relation to the case number, for FS and MR related to tab \ref{tab:air}}
+\caption{Gamma index in relation to the case number (the case are listed in section \ref{air}), for FS and MR related to table \ref{tab:air}}
 \label{fig:gamcase}
 \end{figure}
 
@@ -1655,7 +1658,7 @@ Single beam double wedge is the example that gave us the best results, with $100
 
 The full field test returned interesting results. It really did not gave us new information about the features of the algorithm but gives us a general overview on the behaviour of pencil beam fine sampling in simple full field cases. The comparison between fine sampling and experimental data shows good agreement. 
 The large maximum percentage difference in case number 2, 3 and 4, has its reason in the aforesaid problems with weight and optimisation (better explained in section \ref{sec:FFDW}) that could be solved with some improvements in the algorithm. The disagreement with case 5 has the same reason but is amplified by the position of the ionization chambers because is on a higher gradient region.
-As clear in table \ref{tab:FFDW},  in most of the cases, the maximum percentage difference and the standard deviation, between the measured dose and the dose calculated with fine sampling, are globally in line with the others. In particular, it should be compared with the \emph{planned} dose which should be the most accurate one between the four listed methods.
+As clear in table \ref{tab:FFDW},  in most of the cases, the maximum percentage difference and the standard deviation, between the measured dose and the dose calculated with fine sampling, are globally in line with the others. In particular, fine sampling should be compared with the \emph{planned} dose which should be the most accurate one between the four listed methods. As explained before, Syngo dose was calculated interpolating the full dose deposition on the chamber positions, instead the planned dose was obtained with direct computation.
 
 \begin{table}[t]
 \centering
@@ -1676,7 +1679,7 @@ Case & \multicolumn{2}{c}{matRad} & \multicolumn{2}{c}{Syngo} & \multicolumn{2}{
 9 & $10.55\%$ & $3.93$ & $13.65\%$ & $5.07$ & $5.69\%$ & $2.15$ & $9.56\%$ & $4.13$\\
 \bottomrule
 \end{tabular}
-\caption{Results for the full field double wedge. Maximum difference in percentage and standar deviation ($\sigma$) in $cGy$}
+\caption{Results for the full field double wedge. Maximum difference in percentage and standard deviation ($\sigma$) in $cGy$}
 \label{tab:FFDW}
 \end{table}
 
@@ -1712,7 +1715,7 @@ In order to test these methods, they have used a phantom very similar to the air
 {\includegraphics[width=.3\textwidth]{Images/souk_int}} 
 {\includegraphics[width=.3\textwidth]{Images/souk_prof}} 
 \caption{Dose distributions for $172\,MeV$ protons in a Soukup phantom. On the left
-side is the central axis depth dose per primary proton (mean dose of four voxels around the centre), in the middle is the integrated depth dose per primary proton and on the right side is the lateral dose profile in the depth of the first Bragg peak. Calculated with fine sampling.}
+side is the central axis depth dose per primary proton (mean dose of four voxels around the centre), in the middle is the integrated depth dose per primary proton and on the right side is the lateral dose profile in the depth of the first Bragg peak. Cyan and red area represent the inhomogeneities in Soukup phantom. Calculated with fine sampling.}
 \label{fig:souk_fs}
 \end{figure}
 
